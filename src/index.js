@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const alltasks = require("./utils/main");
+const alltasks = require("./tasks/main");
 const { parseInput } = require("./utils/utils");
 
 async function run() {
