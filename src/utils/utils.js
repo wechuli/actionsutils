@@ -2,7 +2,8 @@ const core = require("@actions/core");
 const allTasks = require("../tasks/main");
 
 function parseInput() {
-  const input = core.getInput("tasks");
+  const input = core.getInput("tasks") || "context";
+  //
   let tasksArray = input.split(",").map((task) => task.trim());
   // validate that we support all the tasks
   for (const task of tasksArray) {
