@@ -5,9 +5,10 @@ inputs:
     description: 'token to be used for making authenticated calls to the GitHub API'
     required: false
     default: ${{ github.token }}
-  task:
+  tasks:
     description: 'task(s) that you want to perform'
-    required: false
+    required: true
+    default: "context"
 
 outputs:
   random-output:
