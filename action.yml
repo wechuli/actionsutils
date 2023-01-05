@@ -6,7 +6,7 @@ inputs:
     required: false
     default: ${{ github.token }}
   task:
-    description: 'task that you want to perform'
+    description: 'task(s) that you want to perform'
     required: false
 
 outputs:
