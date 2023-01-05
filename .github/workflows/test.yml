@@ -8,3 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: wechuli/actionsutils@main
+      - uses: wechuli/actionsutils@main
+        with:
+          tasks: 'context,oidctoken'
