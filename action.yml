@@ -1,0 +1,18 @@
+name: 'Actions utilities'
+description: 'GitHub Action to update pull request with base branches'
+inputs:
+  token:
+    description: 'token to be used for making authenticated calls to the GitHub API'
+    required: false
+    default: ${{ github.token }}
+  task:
+    description: 'task that you want to perform'
+    required: false
+
+outputs:
+  random-output:
+    description: 'Some random output'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
