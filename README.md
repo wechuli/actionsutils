@@ -12,7 +12,7 @@ If you want to perform more than a single task on one debug step, provide a comm
 This simply prints out the `github` context which corresponds to the webhook payload. This is the default behavior if no other task is provided
 
 ```yml
-      - uses: wechuli/actionsutils@main
+      - uses: wechuli/actionsutils@v1.0.0
         with:
           tasks: 'context'
 ```
@@ -28,7 +28,7 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:   
-      - uses: wechuli/actionsutils@main
+      - uses: wechuli/actionsutils@v1.0.0
         with:
           tasks: 'oidctoken'
 ```
