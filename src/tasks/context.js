@@ -1,5 +1,9 @@
+const core = require("@actions/core");
+const github = require("@actions/github");
+
 async function context() {
-  console.log("printenvs");
+  const context = github.context;
+  console.info(context);
 }
 
 module.exports = {
