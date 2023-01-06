@@ -7,7 +7,7 @@ async function run() {
     const tasks = parseInput();
     console.log(tasks);
     for (const task of tasks) {
-      alltasks[task]();
+      await alltasks[task]();
     }
   } catch (error) {
     core.setFailed(error.message);

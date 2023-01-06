@@ -1,4 +1,4 @@
-function context() {
+async function context() {
   console.log("printenvs");
 }
 
