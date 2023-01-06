@@ -24952,7 +24952,7 @@ async function oidctoken() {
   const id_token = await core.getIDToken();
   // decode the id_token
   const decoded = jsonwebtoken.decode(id_token, { complete: true });
-  console.log(decoded);
+  console.info(decoded);
 }
 
 module.exports = {
@@ -24976,7 +24976,6 @@ function parseInput() {
   for (const task of tasksArray) {
     if (!allTasks[task]) {
       // remove this task from the array
-      
       throw new Error(`Unsupported task: ${task}`);
     }
   }
@@ -25154,7 +25153,7 @@ const { parseInput } = __nccwpck_require__(5712);
 async function run() {
   try {
     const tasks = parseInput();
-    console.log(tasks);
+    console.log(`Requested tasks: ${tasks}`);
     for (const task of tasks) {
       await alltasks[task]();
     }
