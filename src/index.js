@@ -5,7 +5,7 @@ const { parseInput } = require("./utils/utils");
 async function run() {
   try {
     const tasks = parseInput();
-    console.log(tasks);
+    console.log(`Requested tasks: ${tasks}`);
     for (const task of tasks) {
       await alltasks[task]();
     }

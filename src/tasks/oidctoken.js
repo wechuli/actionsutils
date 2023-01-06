@@ -5,7 +5,7 @@ async function oidctoken() {
   const id_token = await core.getIDToken();
   // decode the id_token
   const decoded = jsonwebtoken.decode(id_token, { complete: true });
-  console.log(decoded);
+  console.info(decoded);
 }
 
 module.exports = {
