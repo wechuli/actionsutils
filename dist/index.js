@@ -31739,7 +31739,7 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
 async function context() {
-  const context = JSON.stringify(github.context);
+  const context = JSON.stringify(github.context, null, 2);
 
   console.log(".................CONTEXT..........................");
 
