@@ -1,5 +1,8 @@
 name: 'Action utilities'
 description: 'GitHub Action to provide utilities for debugging various GitHub Actions'
+branding:
+  icon: 'info'
+  color: 'blue'
 inputs:
   token:
     description: 'token to be used for making authenticated calls to the GitHub API'
