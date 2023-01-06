@@ -1,5 +1,5 @@
-name: 'Actions utilities'
-description: 'GitHub Action to update pull request with base branches'
+name: 'Action utilities'
+description: 'GitHub Action to provide utilities for debugging various GitHub Actions'
 inputs:
   token:
     description: 'token to be used for making authenticated calls to the GitHub API'
