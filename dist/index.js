@@ -31739,8 +31739,13 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
 async function context() {
-  const context = github.context;
+  const context = JSON.stringify(github.context);
+
+  console.log(".................CONTEXT..........................");
+
   console.info(context);
+
+  console.log("............................................");
 }
 
 module.exports = {
@@ -31775,7 +31780,10 @@ async function oidctoken() {
   const id_token = await core.getIDToken();
   // decode the id_token
   const decoded = jsonwebtoken.decode(id_token, { complete: true });
+
+  console.info("..................ID_TOKEN..........................");
   console.info(decoded);
+  console.info("...........................................");
 }
 
 module.exports = {
