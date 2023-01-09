@@ -31755,16 +31755,32 @@ module.exports = {
 
 /***/ }),
 
+/***/ 674:
+/***/ ((module) => {
+
+function logEnvs() {
+  let allEnvs = process.env;
+  JSON.stringify(allEnvs, null, 2);
+}
+
+module.exports = {
+  envs: logEnvs,
+};
+
+
+/***/ }),
+
 /***/ 8191:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const { oidctoken } = __nccwpck_require__(2314);
 const { context } = __nccwpck_require__(984);
-
+const { envs } = __nccwpck_require__(674);
 
 module.exports = {
   oidctoken,
   context,
+  envs,
 };
 
 
