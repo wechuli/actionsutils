@@ -6,6 +6,7 @@ If you want to perform more than a single task on one debug step, provide a comm
 ## Suported Tasks
 - context
 - oidctoken
+- envs
 
 ### context
 
@@ -31,5 +32,22 @@ jobs:
       - uses: wechuli/actionsutils@v1.0.0
         with:
           tasks: 'oidctoken'
+```
+### envs
+
+Prints out all the environment variables available for the runner:
+
+
+```yml
+jobs:
+  testjob:
+    permissions:
+      contents: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:   
+      - uses: wechuli/actionsutils@v1.0.0
+        with:
+          tasks: 'envs'
 ```
 
