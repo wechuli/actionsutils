@@ -1,4 +1,4 @@
-function logEnvs() {
+async function logEnvs() {
   let allEnvs = process.env;
   return JSON.stringify(allEnvs, null, 2);
 }

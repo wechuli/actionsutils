@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const allTasks = require("../tasks/main");
 
-function parseInput() {
+function parseTaskInput() {
   const input = core.getInput("tasks") || "context";
   //
   let tasksArray = input.split(",").map((task) => task.trim());
@@ -15,6 +15,12 @@ function parseInput() {
   return tasksArray;
 }
 
+function determineCreateArtifact() {
+  const input = core.getInput("create-artifact") || "false";
+  return input === "true";
+}
+
 module.exports = {
-  parseInput,
+  parseTaskInput,
+  determineCreateArtifact,
 };
