@@ -31740,12 +31740,7 @@ const github = __nccwpck_require__(5438);
 
 async function context() {
   const context = JSON.stringify(github.context, null, 2);
-
-  console.log(".................CONTEXT..........................");
-
-  console.info(context);
-
-  console.log("............................................");
+  return context;
 }
 
 module.exports = {
@@ -31758,14 +31753,9 @@ module.exports = {
 /***/ 674:
 /***/ ((module) => {
 
-function logEnvs() {
+async function logEnvs() {
   let allEnvs = process.env;
-  JSON.stringify(allEnvs, null, 2);
-  console.log(".................ENV..........................");
-
-  console.info(allEnvs);
-
-  console.log("............................................");
+  return JSON.stringify(allEnvs, null, 2);
 }
 
 module.exports = {
@@ -31789,6 +31779,7 @@ module.exports = {
 };
 
 
+
 /***/ }),
 
 /***/ 2314:
@@ -31802,9 +31793,7 @@ async function oidctoken() {
   // decode the id_token
   const decoded = jsonwebtoken.decode(id_token, { complete: true });
 
-  console.info("..................ID_TOKEN..........................");
-  console.info(decoded);
-  console.info("...........................................");
+  return decoded;
 }
 
 module.exports = {
@@ -31820,7 +31809,7 @@ module.exports = {
 const core = __nccwpck_require__(2186);
 const allTasks = __nccwpck_require__(8191);
 
-function parseInput() {
+function parseTaskInput() {
   const input = core.getInput("tasks") || "context";
   //
   let tasksArray = input.split(",").map((task) => task.trim());
@@ -31834,8 +31823,14 @@ function parseInput() {
   return tasksArray;
 }
 
+function determineCreateArtifact() {
+  const input = core.getInput("create-artifact") || "false";
+  return input === "true";
+}
+
 module.exports = {
-  parseInput,
+  parseTaskInput,
+  determineCreateArtifact,
 };
 
 
@@ -32039,15 +32034,48 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(2186);
+const fs = __nccwpck_require__(7147);
 const alltasks = __nccwpck_require__(8191);
-const { parseInput } = __nccwpck_require__(5712);
+const { parseTaskInput, determineCreateArtifact } = __nccwpck_require__(5712);
 
 async function run() {
   try {
-    const tasks = parseInput();
+    const tasks = parseTaskInput();
     console.log(`Requested tasks: ${tasks}`);
+    let allTaskData = {};
     for (const task of tasks) {
-      await alltasks[task]();
+      let value = await alltasks[task]();
+      allTaskData[task] = value;
+      // print the values in the steps
+      console.log(`Task: ${task}`);
+      console.log(value);
+    }
+    // create an artifact if requested
+    if (determineCreateArtifact()) {
+      const artifactClient = artifact.create();
+      const filename = "tasks-data.json";
+
+      // create a json file with all the data
+      const artifactData = JSON.stringify(allTaskData, null, 2);
+      fs.writeFileSync(filename, artifactData);
+
+      const artifactName = "actionsutilsdebug";
+      const rootDirectory = process.env.GITHUB_WORKSPACE;
+      const files = [filename];
+      const options = {
+        continueOnError: false,
+      };
+      const uploadResult = await artifactClient.uploadArtifact(
+        artifactName,
+        files,
+        rootDirectory,
+        options
+      );
+
+      console.log(`Artifact ${uploadResult.artifactName} was uploaded`);
+
+      // delete the file
+      fs.unlinkSync(filename);
     }
   } catch (error) {
     core.setFailed(error.message);
