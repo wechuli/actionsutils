@@ -3,12 +3,7 @@ const github = require("@actions/github");
 
 async function context() {
   const context = JSON.stringify(github.context, null, 2);
-
-  console.log(".................CONTEXT..........................");
-
-  console.info(context);
-
-  console.log("............................................");
+  return context;
 }
 
 module.exports = {
