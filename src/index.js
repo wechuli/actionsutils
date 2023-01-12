@@ -1,4 +1,5 @@
 const core = require("@actions/core");
+const artifact = require("@actions/artifact");
 const fs = require("fs");
 const alltasks = require("./tasks/main");
 const { parseTaskInput, determineCreateArtifact } = require("./utils/utils");
