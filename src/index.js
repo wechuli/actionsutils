@@ -13,8 +13,13 @@ async function run() {
       let value = await alltasks[task]();
       allTaskData[task] = value;
       // print the values in the steps
-      console.log(`Task: ${task}`);
+      console.log(
+        `.....................${task.toUpperCase()}.....................`
+      );
       console.log(value);
+      console.log(
+        `................................................................`
+      );
     }
     // create an artifact if requested
     if (determineCreateArtifact()) {
