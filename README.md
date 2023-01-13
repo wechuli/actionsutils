@@ -4,7 +4,7 @@ utility functions and tasks using GitHub Actions mainly to debug code
 If you want to perform more than a single task on one debug step, provide a comma separated values with the steps.
 
 ## Options
-- **createartifact** - choose whether you would like to create artifacts for each task.
+- **create-artifact** - choose whether you would like to create artifacts for each task.
 
 ## Suported Tasks
 - context
