@@ -38451,7 +38451,6 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
 async function context() {
-  //const context = JSON.stringify(github.context, null, 2);
   return github.context;
 }
 
@@ -38467,7 +38466,6 @@ module.exports = {
 
 async function logEnvs() {
   let allEnvs = process.env;
-  //return JSON.stringify(allEnvs, null, 2);
   return allEnvs;
 }
 
@@ -38503,9 +38501,9 @@ const jsonwebtoken = __nccwpck_require__(7486);
 
 async function oidctoken() {
   const id_token = await core.getIDToken();
+
   // decode the id_token
   const decoded = jsonwebtoken.decode(id_token, { complete: true });
-
   return decoded;
 }
 
