@@ -13,5 +13,5 @@ jobs:
       - uses: wechuli/actionsutils@main
       - uses: wechuli/actionsutils@main
         with:
-          tasks: 'context,oidctoken'
+          tasks: 'context,oidctoken,envs'
           create-artifact: true
