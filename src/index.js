@@ -16,7 +16,7 @@ async function run() {
       console.log(
         `.....................${task.toUpperCase()}.....................`
       );
-      console.log(value);
+      console.log(JSON.stringify(value));
       console.log(
         `................................................................`
       );
