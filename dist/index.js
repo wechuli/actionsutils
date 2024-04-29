@@ -38666,7 +38666,7 @@ function determineCreateArtifact() {
 
 module.exports = {
   parseTaskInput,
-  determineCreateArtifact,
+  determineCreateArtifact
 };
 
 
