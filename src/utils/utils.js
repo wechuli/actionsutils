@@ -23,6 +23,8 @@ function determineCreateArtifact() {
   return input === "true";
 }
 
+
+
 module.exports = {
   parseTaskInput,
   determineCreateArtifact,
