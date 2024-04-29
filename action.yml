@@ -16,7 +16,9 @@ inputs:
     description: 'whether to create an artifact with the debug information'
     required: false
     default: false
-
+  audience:
+    description: 'custom audience for the OIDC token'
+    required: false
 outputs:
   random-output:
     description: 'Some random output'
