@@ -13,5 +13,6 @@ jobs:
       - uses: wechuli/actionsutils@main
       - uses: wechuli/actionsutils@main
         with:
-          tasks: 'fake'
+          tasks: 'oidctoken,context'
+          audience: 'fakeaudience'
           create-artifact: true
