@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:index": "ncc build src/index.js --license licenses.txt"
-    "build:post":"ncc build src/post.js --license licenses.txt"
+    "build:index": "ncc build src/index.js --license licenses.txt",
+    "build:post":"ncc build src/post.js --license licenses.txt",
     "build":"npm run build:index && npm run build:post"
   },
   "repository": {
